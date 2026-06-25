@@ -27,6 +27,7 @@
             font-weight: bold; 
             cursor: pointer;
             color: #000;
+            text-decoration: none; 
             transition: transform 0.2s;
         }
         .btn:active { transform: scale(0.95); }
@@ -38,9 +39,11 @@
     <h1>SELAMAT DATANG</h1>
     <p>Markas Gacor - Sistem Kerja Terpadu</p>
 
-    <button class="btn" onclick="window.location.href='googlechrome://navigate?url=https://myaccount.google.com/brandaccounts'">🚀 1. PINTU BRAND ACCOUNT (Chrome)</button>
+    <!-- Tombol 1: Paksa buka pakai Chrome (Format Android Intent) -->
+    <a class="btn" href="intent://myaccount.google.com/brandaccounts#Intent;scheme=https;package=com.android.chrome;end">🚀 1. PINTU BRAND ACCOUNT (Chrome)</a>
 
-    <button class="btn" onclick="window.location.href='firefox-focus://open?url=https://www.youtube.com/signin?action_handle_signin=true&next=%2Faccount_advanced&feature=sign_in_button'">🦊 2. PINTU SETELAN DEFAULT (Firefox Focus)</button>
+    <!-- Tombol 2: Paksa buka pakai Firefox Focus (Format Android Intent) -->
+    <a class="btn" href="intent://www.youtube.com/signin?action_handle_signin=true&next=%2Faccount_advanced&feature=sign_in_button#Intent;scheme=https;package=org.mozilla.focus;end">🦊 2. PINTU SETELAN DEFAULT (Firefox Focus)</a>
 
     <div class="footer">
         *Ingat SOP: Centang "Situs Desktop" secara manual di Firefox Focus<br><br>
