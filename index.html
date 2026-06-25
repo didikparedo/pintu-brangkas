@@ -2,17 +2,26 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Markas Gacor - Pasukan</title>
     <style>
+        /* KUNCI 2: Mereset margin dan mencegah halaman goyang horizontal */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent; /* Menghilangkan kedip biru saat diklik di Android */
+        }
         body { 
             font-family: 'Segoe UI', sans-serif; 
             text-align: center; 
             padding: 40px 20px; 
             background: #1a1a1a; 
             color: #fff; 
+            overflow-x: hidden; /* Mengunci paksa layar agar tidak bisa digeser ke samping */
+            min-height: 100vh;
         }
-        h1 { color: #ffcc00; margin-bottom: 10px; }
+        h1 { color: #ffcc00; margin-bottom: 10px; margin-top: 10px; }
         p { color: #ccc; margin-bottom: 30px; }
         .btn { 
             display: block; 
@@ -29,21 +38,33 @@
             color: #000;
             text-decoration: none; 
             transition: transform 0.2s;
+            /* KUNCI 3: Mencegah teks tombol terblok/ter-copy saat ditahan lama */
+            user-select: none;
+            -webkit-user-select: none;
         }
         .btn:active { transform: scale(0.95); }
-        .footer { margin-top: 50px; font-size: 12px; color: #666; }
+        .footer { margin-top: 50px; font-size: 12px; color: #666; padding-bottom: 20px; }
         
-        /* Kotak peringatan khusus Ruang Tunggu */
+        /* Kotak peringatan Ruang Tunggu yang ramah di mata (Dark Amber Theme) */
         .alert-box { 
-            background: #ff4444; 
-            color: white; 
-            padding: 15px; 
+            background: #2b1c00; 
+            color: #ffcc00; 
+            padding: 18px; 
             border-radius: 10px; 
             margin: 0 auto 20px auto; 
             max-width: 380px;
-            font-weight: bold; 
-            border: 2px dashed #fff; 
+            font-size: 15px;
+            border: 2px dashed #ffcc00; 
             text-align: left;
+            line-height: 1.6;
+        }
+        .alert-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: #ff7675; 
+            margin-bottom: 12px;
+            display: block;
         }
     </style>
 </head>
@@ -52,13 +73,11 @@
     <h1 id="judul">SELAMAT DATANG</h1>
     <p id="subjudul">Markas Gacor - Sistem Kerja Terpadu</p>
 
-    <!-- TAMPILAN 1: HALAMAN UTAMA -->
     <div id="menu-utama">
         <a class="btn" href="intent://myaccount.google.com/brandaccounts#Intent;scheme=https;package=com.android.chrome;action=android.intent.action.VIEW;end;" target="_blank">🚀 1. PROSES INVITE GMAIL JUAL</a>
         <a class="btn" href="intent://didikparedo.github.io/pintu-brangkas/?mode=focus#Intent;scheme=https;package=org.mozilla.focus;action=android.intent.action.VIEW;end;">🦊 2. PROSES AMBIL KODE CADANGAN</a>
     </div>
 
-    <!-- TAMPILAN 2: HALAMAN KHUSUS (Mode Focus) -->
     <div id="menu-focus" style="display: none;">
         <p style="color: #25d366; font-weight: bold;">✅ Mode Penyamaran Aktif</p>
         <p style="color: #ccc; font-size: 14px; margin-bottom: 20px;">Kerjakan berurutan. Tutup tab setelah selesai 1 tahap.</p>
@@ -66,25 +85,22 @@
         <a class="btn" style="background: #4285F4; color: #fff;" href="https://accounts.google.com/Login" target="_blank">🔑 1. LOGIN GMAIL JUAL</a>
         <a class="btn" style="background: #FF9800; color: #fff;" href="https://myaccount.google.com/brandaccounts?si=1" target="_blank">🤝 2. TERIMA UNDANGAN</a>
         
-        <!-- Langkah 3: Mengarah ke Ruang Tunggu di web ini sendiri (Tab Baru) -->
         <a class="btn" style="background: #9b59b6; color: #fff;" href="?mode=ruangtunggu" target="_blank">⚙️ 3. KUNCI CHANNEL JUAL</a>
         
         <a class="btn" style="background: #34A853; color: #fff;" href="https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome" target="_blank">🛡️ 4. AKTIFKAN 2 STEP</a>
         <a class="btn" style="background: #EA4335; color: #fff;" href="https://myaccount.google.com/two-step-verification/backup-codes" target="_blank">📝 5. AMBIL KODE CADANGAN</a>
     </div>
 
-    <!-- TAMPILAN 3: RUANG TUNGGU (Penangkal Auto-Redirect YouTube) -->
     <div id="menu-ruangtunggu" style="display: none;">
         <div class="alert-box">
-            ⚠️ STOP SEBENTAR! ⚠️<br><br>
-            1. Klik titik 3 di pojok kanan atas SEKARANG.<br>
-            2. Centang "Situs Desktop".<br>
-            3. Halaman akan me-refresh sebentar.<br>
-            4. Jika sudah centang, baru klik tombol di bawah!
+            <span class="alert-title">⚠️ STOP SEBENTAR! ⚠️</span>
+            1. Klik <b>titik 3</b> di pojok kanan atas SEKARANG.<br>
+            2. Centang <b>"Situs Desktop"</b>.<br>
+            3. Halaman akan me-refresh sekejap.<br>
+            4. Jika sudah, baru klik tombol di bawah!
         </div>
         
-        <!-- Tombol ini membuka YouTube di TAB YANG SAMA (tanpa target="_blank") agar Desktop Mode terbawa -->
-        <a class="btn" style="background: #ff0000; color: #fff;" href="https://www.youtube.com/signin?action_handle_signin=true&next=%2Faccount_advanced&feature=sign_in_button">🔥 LANJUT KUNCI CHANNEL</a>
+        <a class="btn" style="background: #e67e22; color: #fff;" href="https://www.youtube.com/signin?action_handle_signin=true&next=%2Faccount_advanced&feature=sign_in_button">🔥 LANJUT KUNCI CHANNEL</a>
     </div>
 
     <div class="footer">
@@ -92,7 +108,6 @@
     </div>
 
     <script>
-        // Logika pengatur jalan (Routing)
         if (window.location.search.includes('mode=focus')) {
             document.getElementById('menu-utama').style.display = 'none';
             document.getElementById('menu-focus').style.display = 'block';
@@ -103,8 +118,8 @@
             document.getElementById('menu-utama').style.display = 'none';
             document.getElementById('menu-focus').style.display = 'none';
             document.getElementById('menu-ruangtunggu').style.display = 'block';
-            document.getElementById('judul').innerText = "RUANG TUNGGU ENABLE DESKTOP MODE";
-            document.getElementById('subjudul').innerText = "Wajib ikuti instruksi di dalam kotak merah";
+            document.getElementById('judul').innerText = "RUANG TUNGGU DESKTOP";
+            document.getElementById('subjudul').innerText = "Wajib ikuti instruksi di dalam kotak";
         }
     </script>
 
