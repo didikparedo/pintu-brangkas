@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Markas Gacor - Pasukan</title>
     <style>
-        /* KUNCI 2: Mereset margin dan mencegah halaman goyang horizontal */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            -webkit-tap-highlight-color: transparent; /* Menghilangkan kedip biru saat diklik di Android */
+            -webkit-tap-highlight-color: transparent;
         }
         body { 
             font-family: 'Segoe UI', sans-serif; 
@@ -18,7 +17,7 @@
             padding: 40px 20px; 
             background: #1a1a1a; 
             color: #fff; 
-            overflow-x: hidden; /* Mengunci paksa layar agar tidak bisa digeser ke samping */
+            overflow-x: hidden; 
             min-height: 100vh;
         }
         h1 { color: #ffcc00; margin-bottom: 10px; margin-top: 10px; }
@@ -38,14 +37,12 @@
             color: #000;
             text-decoration: none; 
             transition: transform 0.2s;
-            /* KUNCI 3: Mencegah teks tombol terblok/ter-copy saat ditahan lama */
             user-select: none;
             -webkit-user-select: none;
         }
         .btn:active { transform: scale(0.95); }
         .footer { margin-top: 50px; font-size: 12px; color: #666; padding-bottom: 20px; }
         
-        /* Kotak peringatan Ruang Tunggu yang ramah di mata (Dark Amber Theme) */
         .alert-box { 
             background: #2b1c00; 
             color: #ffcc00; 
@@ -73,7 +70,12 @@
     <h1 id="judul">SELAMAT DATANG</h1>
     <p id="subjudul">Markas Gacor - Sistem Kerja Terpadu</p>
 
-    <div id="menu-utama">
+    <div id="pilih-device">
+        <button class="btn" style="background: #34A853; color: #fff;" onclick="bukaMobile()">📱 VERSI HP (ANDROID)</button>
+        <button class="btn" style="background: #9b59b6; color: #fff;" onclick="bukaPC()">💻 VERSI PC / LAPTOP</button>
+    </div>
+
+    <div id="menu-mobile" style="display: none;">
         <a class="btn" href="intent://myaccount.google.com/brandaccounts#Intent;scheme=https;package=com.android.chrome;action=android.intent.action.VIEW;end;" target="_blank">🚀 1. PROSES INVITE GMAIL JUAL</a>
         <a class="btn" href="intent://didikparedo.github.io/pintu-brangkas/?mode=focus#Intent;scheme=https;package=org.mozilla.focus;action=android.intent.action.VIEW;end;">🦊 2. PROSES AMBIL KODE CADANGAN</a>
     </div>
@@ -81,12 +83,9 @@
     <div id="menu-focus" style="display: none;">
         <p style="color: #25d366; font-weight: bold;">✅ Mode Penyamaran Aktif</p>
         <p style="color: #ccc; font-size: 14px; margin-bottom: 20px;">Kerjakan berurutan. Tutup tab setelah selesai 1 tahap.</p>
-        
         <a class="btn" style="background: #4285F4; color: #fff;" href="https://accounts.google.com/Login" target="_blank">🔑 1. LOGIN GMAIL JUAL</a>
         <a class="btn" style="background: #FF9800; color: #fff;" href="https://myaccount.google.com/brandaccounts?si=1" target="_blank">🤝 2. TERIMA UNDANGAN</a>
-        
         <a class="btn" style="background: #9b59b6; color: #fff;" href="?mode=ruangtunggu" target="_blank">⚙️ 3. KUNCI CHANNEL JUAL</a>
-        
         <a class="btn" style="background: #34A853; color: #fff;" href="https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome" target="_blank">🛡️ 4. AKTIFKAN 2 STEP</a>
         <a class="btn" style="background: #EA4335; color: #fff;" href="https://myaccount.google.com/two-step-verification/backup-codes" target="_blank">📝 5. AMBIL KODE CADANGAN</a>
     </div>
@@ -99,24 +98,71 @@
             3. Halaman akan me-refresh sekejap.<br>
             4. Jika sudah, baru klik tombol di bawah!
         </div>
-        
         <a class="btn" style="background: #e67e22; color: #fff;" href="https://www.youtube.com/signin?action_handle_signin=true&next=%2Faccount_advanced&feature=sign_in_button">🔥 LANJUT KUNCI CHANNEL</a>
     </div>
 
+    <div id="menu-pc-utama" style="display: none;">
+        <a class="btn" href="https://myaccount.google.com/brandaccounts" target="_blank">🚀 1. PROSES INVITE GMAIL JUAL</a>
+        <button class="btn" style="background: #e67e22; color: #fff;" onclick="bukaPCCadangan()">💻 2. PROSES AMBIL KODE CADANGAN</button>
+    </div>
+
+    <div id="menu-pc-cadangan" style="display: none;">
+        <p style="color: #25d366; font-weight: bold;">✅ Mode PC / Laptop Aktif</p>
+        <p style="color: #ccc; font-size: 14px; margin-bottom: 20px;">Semua link otomatis terbuka di Tab Baru. Tutup tab bila selesai.</p>
+        <a class="btn" style="background: #4285F4; color: #fff;" href="https://accounts.google.com/Login" target="_blank">🔑 1. LOGIN GMAIL JUAL</a>
+        <a class="btn" style="background: #FF9800; color: #fff;" href="https://myaccount.google.com/brandaccounts?si=1" target="_blank">🤝 2. TERIMA UNDANGAN</a>
+        <a class="btn" style="background: #9b59b6; color: #fff;" href="https://www.youtube.com/signin?action_handle_signin=true&next=%2Faccount_advanced&feature=sign_in_button" target="_blank">⚙️ 3. KUNCI CHANNEL JUAL</a>
+        <a class="btn" style="background: #34A853; color: #fff;" href="https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome" target="_blank">🛡️ 4. AKTIFKAN 2 STEP</a>
+        <a class="btn" style="background: #EA4335; color: #fff;" href="https://myaccount.google.com/two-step-verification/backup-codes" target="_blank">📝 5. AMBIL KODE CADANGAN</a>
+    </div>
+
     <div class="footer">
-        Sistem Aman - Semua Sesi Terhapus Saat Browser Ditutup
+        Sistem Aman Terpadu
     </div>
 
     <script>
-        if (window.location.search.includes('mode=focus')) {
-            document.getElementById('menu-utama').style.display = 'none';
-            document.getElementById('menu-focus').style.display = 'block';
+        // Fungsi untuk menyembunyikan semua tampilan
+        function sembunyikanSemua() {
+            document.getElementById('pilih-device').style.display = 'none';
+            document.getElementById('menu-mobile').style.display = 'none';
+            document.getElementById('menu-focus').style.display = 'none';
             document.getElementById('menu-ruangtunggu').style.display = 'none';
+            document.getElementById('menu-pc-utama').style.display = 'none';
+            document.getElementById('menu-pc-cadangan').style.display = 'none';
+        }
+
+        // Tampilkan Menu Utama Mobile
+        function bukaMobile() {
+            sembunyikanSemua();
+            document.getElementById('menu-mobile').style.display = 'block';
+            document.getElementById('judul').innerText = "MODE ANDROID";
+            document.getElementById('subjudul').innerText = "Pilih proses eksekusi di bawah";
+        }
+
+        // Tampilkan Menu Utama PC
+        function bukaPC() {
+            sembunyikanSemua();
+            document.getElementById('menu-pc-utama').style.display = 'block';
+            document.getElementById('judul').innerText = "MODE PC / LAPTOP";
+            document.getElementById('subjudul').innerText = "Silakan mulai proses eksekusi";
+        }
+
+        // Tampilkan 5 Langkah Kode Cadangan versi PC
+        function bukaPCCadangan() {
+            sembunyikanSemua();
+            document.getElementById('menu-pc-cadangan').style.display = 'block';
+            document.getElementById('judul').innerText = "TAHAP KODE CADANGAN";
+            document.getElementById('subjudul').innerText = "Selesaikan urutan dari nomor 1 sampai 5";
+        }
+
+        // Logika Routing Otomatis berdasarkan URL (Khusus Mobile)
+        if (window.location.search.includes('mode=focus')) {
+            sembunyikanSemua();
+            document.getElementById('menu-focus').style.display = 'block';
             document.getElementById('judul').innerText = "TAHAP KODE CADANGAN";
             document.getElementById('subjudul').innerText = "Selesaikan urutan dari nomor 1 sampai 5";
         } else if (window.location.search.includes('mode=ruangtunggu')) {
-            document.getElementById('menu-utama').style.display = 'none';
-            document.getElementById('menu-focus').style.display = 'none';
+            sembunyikanSemua();
             document.getElementById('menu-ruangtunggu').style.display = 'block';
             document.getElementById('judul').innerText = "RUANG TUNGGU DESKTOP";
             document.getElementById('subjudul').innerText = "Wajib ikuti instruksi di dalam kotak";
