@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Markas Gacor - Pasukan</title>
+    <title>Tool Ternak Sewu - Pasukan</title>
     <style>
         * {
             box-sizing: border-box;
@@ -63,6 +63,27 @@
             margin-bottom: 12px;
             display: block;
         }
+        
+        /* DESAIN KOTAK POP-UP PEMILIH BROWSER */
+        #modal-browser {
+            display: none; 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.85); 
+            z-index: 999; 
+            justify-content: center; 
+            align-items: center;
+        }
+        .modal-content {
+            background: #222; 
+            padding: 30px 20px; 
+            border-radius: 15px; 
+            width: 90%; 
+            max-width: 350px; 
+            border: 2px solid #ffcc00; 
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -77,16 +98,27 @@
     </div>
 
     <!-- ============================================== -->
-    <!-- ZONA MOBILE (MENGGUNAKAN INTENT & RUANG TUNGGU) -->
+    <!-- ZONA MOBILE (MENGGUNAKAN POP-UP BROWSER CUSTOM) -->
     <!-- ============================================== -->
     <div id="menu-mobile" style="display: none;">
-        <!-- Tombol 1: Link murni Google, package dicabut agar muncul pop-up -->
-        <a class="btn" href="intent://myaccount.google.com/brandaccounts#Intent;scheme=https;action=android.intent.action.VIEW;end;" target="_blank">🚀 1. PROSES INVITE GMAIL JUAL</a>
-        
-        <!-- Tombol 2: Link web markas (pakai mode=focus), package dicabut agar muncul pop-up -->
-        <a class="btn" href="intent://didikparedo.github.io/pintu-brangkas/?mode=focus#Intent;scheme=https;action=android.intent.action.VIEW;end;" target="_blank">🦊 2. PROSES AMBIL KODE CADANGAN</a>
+        <!-- Sekarang pakai tombol biasa yang memanggil pop-up -->
+        <button class="btn" onclick="tampilkanPopUp('myaccount.google.com/brandaccounts')">🚀 1. PROSES INVITE GMAIL JUAL</button>
+        <button class="btn" onclick="tampilkanPopUp('didikparedo.github.io/pintu-brangkas/?mode=focus')">🦊 2. PROSES AMBIL KODE CADANGAN</button>
     </div>
 
+    <!-- INI ADALAH KOTAK POP-UP PILIHAN BROWSERNYA -->
+    <div id="modal-browser">
+        <div class="modal-content">
+            <h3 style="color: #ffcc00; margin-bottom: 20px;">PILIH BROWSER EKSEKUSI</h3>
+            <button class="btn" style="background: #9b59b6; color: #fff; margin-top: 0;" onclick="eksekusiBrowser('org.mozilla.focus')">🦊 FIREFOX FOCUS</button>
+            <button class="btn" style="background: #4285F4; color: #fff;" onclick="eksekusiBrowser('com.android.chrome')">🌐 GOOGLE CHROME</button>
+            <button class="btn" style="background: #444; color: #fff; margin-bottom: 0;" onclick="tutupPopUp()">❌ BATAL</button>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- ZONA RUANG TUNGGU & FOCUS -->
+    <!-- ============================================== -->
     <div id="menu-focus" style="display: none;">
         <p style="color: #25d366; font-weight: bold;">✅ Mode Penyamaran Aktif</p>
         <p style="color: #ccc; font-size: 14px; margin-bottom: 20px;">Kerjakan berurutan. Tutup tab setelah selesai 1 tahap.</p>
@@ -131,6 +163,26 @@
     </div>
 
     <script>
+        let urlTujuan = "";
+
+        // Fungsi Memunculkan Kotak Pop-Up Pemilih Browser
+        function tampilkanPopUp(url) {
+            urlTujuan = url;
+            document.getElementById('modal-browser').style.display = 'flex';
+        }
+
+        // Fungsi Menutup Kotak Pop-Up
+        function tutupPopUp() {
+            document.getElementById('modal-browser').style.display = 'none';
+        }
+
+        // Fungsi Menembak Intent sesuai Browser yang Dipilih Pasukan
+        function eksekusiBrowser(namaPackage) {
+            let linkIntent = `intent://${urlTujuan}#Intent;scheme=https;package=${namaPackage};action=android.intent.action.VIEW;end;`;
+            window.open(linkIntent, '_blank');
+            tutupPopUp(); // Tutup popup setelah diklik
+        }
+
         // Fungsi untuk menyembunyikan semua tampilan
         function sembunyikanSemua() {
             document.getElementById('pilih-device').style.display = 'none';
@@ -165,7 +217,7 @@
             document.getElementById('subjudul').innerText = "Selesaikan urutan dari nomor 1 sampai 5";
         }
 
-        // Logika Routing Otomatis berdasarkan URL (Khusus Mobile)
+        // Logika Routing Otomatis berdasarkan URL
         if (window.location.search.includes('mode=focus')) {
             sembunyikanSemua();
             document.getElementById('menu-focus').style.display = 'block';
