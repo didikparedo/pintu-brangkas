@@ -80,8 +80,11 @@
     <!-- ZONA MOBILE (MENGGUNAKAN INTENT & RUANG TUNGGU) -->
     <!-- ============================================== -->
     <div id="menu-mobile" style="display: none;">
-        <a class="btn" href="intent://myaccount.google.com/brandaccounts/?mode=focus#Intent;scheme=https;package=org.mozilla.focus;action=android.intent.action.VIEW;end;" target="_blank">🚀 1. PROSES INVITE GMAIL JUAL</a>
-        <a class="btn" href="intent://didikparedo.github.io/pintu-brangkas/?mode=focus#Intent;scheme=https;package=org.mozilla.focus;action=android.intent.action.VIEW;end;">🦊 2. PROSES AMBIL KODE CADANGAN</a>
+        <!-- Tombol 1: Link murni Google, package dicabut agar muncul pop-up -->
+        <a class="btn" href="intent://myaccount.google.com/brandaccounts#Intent;scheme=https;action=android.intent.action.VIEW;end;" target="_blank">🚀 1. PROSES INVITE GMAIL JUAL</a>
+        
+        <!-- Tombol 2: Link web markas (pakai mode=focus), package dicabut agar muncul pop-up -->
+        <a class="btn" href="intent://didikparedo.github.io/pintu-brangkas/?mode=focus#Intent;scheme=https;action=android.intent.action.VIEW;end;" target="_blank">🦊 2. PROSES AMBIL KODE CADANGAN</a>
     </div>
 
     <div id="menu-focus" style="display: none;">
