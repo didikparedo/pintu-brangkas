@@ -91,34 +91,25 @@
     <h1 id="judul">TOOL TERNAK SEWU</h1>
     <p id="subjudul">Mangan, Ngopi, Turu, Bayaran, Order Mia!!</p>
 
-    <!-- GERBANG AWAL: PEMILIH DEVICE -->
     <div id="pilih-device">
-        <button class="btn" style="background: #34A853; color: #fff;" onclick="bukaMobile()">📱 VERSI HP (ANDROID)</button>
-        <button class="btn" style="background: #9b59b6; color: #fff;" onclick="bukaPC()">💻 VERSI PC / LAPTOP</button>
+        <button class="btn" style="background: #34A853; color: #fff;" onclick="bukaMobile()">📱 MODE ANDROID</button>
+        <button class="btn" style="background: #9b59b6; color: #fff;" onclick="bukaPC()">💻 MODE PC / LAPTOP</button>
     </div>
 
-    <!-- ============================================== -->
-    <!-- ZONA MOBILE (MENGGUNAKAN POP-UP BROWSER CUSTOM) -->
-    <!-- ============================================== -->
     <div id="menu-mobile" style="display: none;">
-        <!-- Sekarang pakai tombol biasa yang memanggil pop-up -->
-        <button class="btn" onclick="tampilkanPopUp('myaccount.google.com/brandaccounts')">🚀 1. PROSES INVITE GMAIL JUAL</button>
-        <button class="btn" onclick="tampilkanPopUp('didikparedo.github.io/pintu-brangkas/?mode=focus')">🦊 2. PROSES AMBIL KODE CADANGAN</button>
+        <button class="btn" onclick="tampilkanPopUp('myaccount.google.com/brandaccounts', 1)">🚀 1. PROSES INVITE GMAIL JUAL</button>
+        <button class="btn" onclick="tampilkanPopUp('didikparedo.github.io/pintu-brangkas/?mode=focus', 2)">🦊 2. PROSES AMBIL KODE CADANGAN</button>
     </div>
 
-    <!-- INI ADALAH KOTAK POP-UP PILIHAN BROWSERNYA -->
     <div id="modal-browser">
         <div class="modal-content">
-            <h3 style="color: #ffcc00; margin-bottom: 20px;">PILIH BROWSER EKSEKUSI</h3>
-            <button class="btn" style="background: #9b59b6; color: #fff; margin-top: 0;" onclick="eksekusiBrowser('org.mozilla.focus')">🦊 FIREFOX FOCUS</button>
-            <button class="btn" style="background: #4285F4; color: #fff;" onclick="eksekusiBrowser('com.android.chrome')">🌐 GOOGLE CHROME</button>
+            <h3 id="popup-title" style="color: #ffcc00; margin-bottom: 20px;">PILIH BROWSER EKSEKUSI</h3>
+            <button id="btn-ff" class="btn" style="background: #9b59b6; color: #fff; margin-top: 0;" onclick="eksekusiBrowser('org.mozilla.focus')">🦊 FIREFOX FOCUS</button>
+            <button id="btn-chrome" class="btn" style="background: #4285F4; color: #fff;" onclick="eksekusiBrowser('com.android.chrome')">🌐 GOOGLE CHROME</button>
             <button class="btn" style="background: #444; color: #fff; margin-bottom: 0;" onclick="tutupPopUp()">❌ BATAL</button>
         </div>
     </div>
 
-    <!-- ============================================== -->
-    <!-- ZONA RUANG TUNGGU & FOCUS -->
-    <!-- ============================================== -->
     <div id="menu-focus" style="display: none;">
         <p style="color: #25d366; font-weight: bold;">✅ Mode Penyamaran Aktif</p>
         <p style="color: #ccc; font-size: 14px; margin-bottom: 20px;">Kerjakan berurutan. Tutup tab setelah selesai 1 tahap.</p>
@@ -140,9 +131,6 @@
         <a class="btn" style="background: #e67e22; color: #fff;" href="https://www.youtube.com/signin?action_handle_signin=true&next=%2Faccount_advanced&feature=sign_in_button">🔥 LANJUT KUNCI CHANNEL</a>
     </div>
 
-    <!-- ============================================== -->
-    <!-- ZONA PC / LAPTOP (MURNI STANDARD NEW TAB LINK) -->
-    <!-- ============================================== -->
     <div id="menu-pc-utama" style="display: none;">
         <a class="btn" href="https://myaccount.google.com/brandaccounts" target="_blank">🚀 1. PROSES INVITE GMAIL JUAL</a>
         <button class="btn" style="background: #e67e22; color: #fff;" onclick="bukaPCCadangan()">💻 2. PROSES AMBIL KODE CADANGAN</button>
@@ -165,10 +153,22 @@
     <script>
         let urlTujuan = "";
 
-        // Fungsi Memunculkan Kotak Pop-Up Pemilih Browser
-        function tampilkanPopUp(url) {
+        // Fungsi Memunculkan Kotak Pop-Up Pemilih Browser dengan Logika Cerdas
+        function tampilkanPopUp(url, step) {
             urlTujuan = url;
             document.getElementById('modal-browser').style.display = 'flex';
+
+            if (step === 1) {
+                // Untuk Proses 1: Tampilkan Chrome & Firefox
+                document.getElementById('popup-title').innerText = "PILIH BROWSER EKSEKUSI";
+                document.getElementById('btn-chrome').style.display = 'block';
+                document.getElementById('btn-ff').innerText = "🦊 FIREFOX FOCUS";
+            } else if (step === 2) {
+                // Untuk Proses 2: Sembunyikan Chrome, Paksa Firefox Focus Mode Samaran
+                document.getElementById('popup-title').innerText = "WAJIB MODE SAMARAN";
+                document.getElementById('btn-chrome').style.display = 'none';
+                document.getElementById('btn-ff').innerText = "🦊 FIREFOX FOCUS (MODE SAMARAN)";
+            }
         }
 
         // Fungsi Menutup Kotak Pop-Up
