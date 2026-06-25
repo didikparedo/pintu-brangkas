@@ -116,8 +116,9 @@
         <a class="btn" style="background: #4285F4; color: #fff;" href="https://accounts.google.com/Login" target="_blank">🔑 1. LOGIN GMAIL JUAL</a>
         <a class="btn" style="background: #FF9800; color: #fff;" href="https://myaccount.google.com/brandaccounts?si=1" target="_blank">🤝 2. TERIMA UNDANGAN</a>
         <a class="btn" style="background: #9b59b6; color: #fff;" href="?mode=ruangtunggu" target="_blank">⚙️ 3. KUNCI CHANNEL JUAL</a>
-        <a class="btn" style="background: #34A853; color: #fff;" href="https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome" target="_blank">🛡️ 4. AKTIFKAN 2 STEP</a>
-        <a class="btn" style="background: #EA4335; color: #fff;" href="https://myaccount.google.com/two-step-verification/backup-codes" target="_blank">📝 5. AMBIL KODE CADANGAN</a>
+        
+        <a class="btn" style="background: #34A853; color: #fff;" href="https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome" target="_blank">📱 4. INPUT NOMER 2 STEP</a>
+        <a class="btn" style="background: #EA4335; color: #fff;" href="https://myaccount.google.com/two-step-verification/backup-codes" target="_blank">📝 5. AKTIFKAN & AMBIL KODE</a>
     </div>
 
     <div id="menu-ruangtunggu" style="display: none;">
@@ -142,8 +143,9 @@
         <a class="btn" style="background: #4285F4; color: #fff;" href="https://accounts.google.com/Login" target="_blank">🔑 1. LOGIN GMAIL JUAL</a>
         <a class="btn" style="background: #FF9800; color: #fff;" href="https://myaccount.google.com/brandaccounts?si=1" target="_blank">🤝 2. TERIMA UNDANGAN</a>
         <a class="btn" style="background: #9b59b6; color: #fff;" href="https://www.youtube.com/signin?action_handle_signin=true&next=%2Faccount_advanced&feature=sign_in_button" target="_blank">⚙️ 3. KUNCI CHANNEL JUAL</a>
-        <a class="btn" style="background: #34A853; color: #fff;" href="https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome" target="_blank">🛡️ 4. AKTIFKAN 2 STEP</a>
-        <a class="btn" style="background: #EA4335; color: #fff;" href="https://myaccount.google.com/two-step-verification/backup-codes" target="_blank">📝 5. AMBIL KODE CADANGAN</a>
+        
+        <a class="btn" style="background: #34A853; color: #fff;" href="https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome" target="_blank">📱 4. INPUT NOMER 2 STEP</a>
+        <a class="btn" style="background: #EA4335; color: #fff;" href="https://myaccount.google.com/two-step-verification/backup-codes" target="_blank">📝 5. AKTIFKAN & AMBIL KODE</a>
     </div>
 
     <div class="footer">
@@ -159,31 +161,26 @@
             document.getElementById('modal-browser').style.display = 'flex';
 
             if (step === 1) {
-                // Untuk Proses 1: Tampilkan Chrome & Firefox
                 document.getElementById('popup-title').innerText = "PILIH BROWSER EKSEKUSI";
                 document.getElementById('btn-chrome').style.display = 'block';
                 document.getElementById('btn-ff').innerText = "🦊 FIREFOX FOCUS";
             } else if (step === 2) {
-                // Untuk Proses 2: Sembunyikan Chrome, Paksa Firefox Focus Mode Samaran
                 document.getElementById('popup-title').innerText = "WAJIB MODE SAMARAN";
                 document.getElementById('btn-chrome').style.display = 'none';
                 document.getElementById('btn-ff').innerText = "🦊 FIREFOX FOCUS (MODE SAMARAN)";
             }
         }
 
-        // Fungsi Menutup Kotak Pop-Up
         function tutupPopUp() {
             document.getElementById('modal-browser').style.display = 'none';
         }
 
-        // Fungsi Menembak Intent sesuai Browser yang Dipilih Pasukan
         function eksekusiBrowser(namaPackage) {
             let linkIntent = `intent://${urlTujuan}#Intent;scheme=https;package=${namaPackage};action=android.intent.action.VIEW;end;`;
             window.open(linkIntent, '_blank');
-            tutupPopUp(); // Tutup popup setelah diklik
+            tutupPopUp();
         }
 
-        // Fungsi untuk menyembunyikan semua tampilan
         function sembunyikanSemua() {
             document.getElementById('pilih-device').style.display = 'none';
             document.getElementById('menu-mobile').style.display = 'none';
@@ -193,7 +190,6 @@
             document.getElementById('menu-pc-cadangan').style.display = 'none';
         }
 
-        // Tampilkan Menu Utama Mobile
         function bukaMobile() {
             sembunyikanSemua();
             document.getElementById('menu-mobile').style.display = 'block';
@@ -201,7 +197,6 @@
             document.getElementById('subjudul').innerText = "Pilih proses eksekusi di bawah";
         }
 
-        // Tampilkan Menu Utama PC
         function bukaPC() {
             sembunyikanSemua();
             document.getElementById('menu-pc-utama').style.display = 'block';
@@ -209,7 +204,6 @@
             document.getElementById('subjudul').innerText = "Silakan mulai proses eksekusi";
         }
 
-        // Tampilkan 5 Langkah Kode Cadangan versi PC
         function bukaPCCadangan() {
             sembunyikanSemua();
             document.getElementById('menu-pc-cadangan').style.display = 'block';
@@ -217,7 +211,6 @@
             document.getElementById('subjudul').innerText = "Selesaikan urutan dari nomor 1 sampai 5";
         }
 
-        // Logika Routing Otomatis berdasarkan URL
         if (window.location.search.includes('mode=focus')) {
             sembunyikanSemua();
             document.getElementById('menu-focus').style.display = 'block';
