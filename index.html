@@ -67,17 +67,24 @@
 </head>
 <body>
 
-    <h1 id="judul">TOOL TERNAK SEWU</h1>
+    <h1 id="judul">SELAMAT DATANG</h1>
     <p id="subjudul">Markas Gacor - Sistem Kerja Terpadu</p>
 
+    <!-- GERBANG AWAL: PEMILIH DEVICE -->
     <div id="pilih-device">
         <button class="btn" style="background: #34A853; color: #fff;" onclick="bukaMobile()">📱 VERSI HP (ANDROID)</button>
         <button class="btn" style="background: #9b59b6; color: #fff;" onclick="bukaPC()">💻 VERSI PC / LAPTOP</button>
     </div>
 
+    <!-- ============================================== -->
+    <!-- ZONA MOBILE (MENGGUNAKAN INTENT & RUANG TUNGGU) -->
+    <!-- ============================================== -->
     <div id="menu-mobile" style="display: none;">
-        <a class="btn" href="intent://myaccount.google.com/brandaccounts#Intent;scheme=https;package=com.android.chrome;action=android.intent.action.VIEW;end;" target="_blank">🚀 1. PROSES INVITE GMAIL JUAL</a>
-        <a class="btn" href="intent://didikparedo.github.io/pintu-brangkas/?mode=focus#Intent;scheme=https;package=org.mozilla.focus;action=android.intent.action.VIEW;end;">🦊 2. PROSES AMBIL KODE CADANGAN</a>
+        <!-- Tombol 1: Bebas pilih browser -->
+        <a class="btn" href="intent://myaccount.google.com/brandaccounts#Intent;scheme=https;action=android.intent.action.VIEW;end;" target="_blank">🚀 1. PROSES INVITE GMAIL JUAL</a>
+        
+        <!-- Tombol 2: Bebas pilih browser (Package ditiadakan agar muncul Pop-up) -->
+        <a class="btn" href="intent://didikparedo.github.io/pintu-brangkas/?mode=focus#Intent;scheme=https;action=android.intent.action.VIEW;end;" target="_blank">🦊 2. PROSES AMBIL KODE CADANGAN</a>
     </div>
 
     <div id="menu-focus" style="display: none;">
@@ -101,6 +108,9 @@
         <a class="btn" style="background: #e67e22; color: #fff;" href="https://www.youtube.com/signin?action_handle_signin=true&next=%2Faccount_advanced&feature=sign_in_button">🔥 LANJUT KUNCI CHANNEL</a>
     </div>
 
+    <!-- ============================================== -->
+    <!-- ZONA PC / LAPTOP (MURNI STANDARD NEW TAB LINK) -->
+    <!-- ============================================== -->
     <div id="menu-pc-utama" style="display: none;">
         <a class="btn" href="https://myaccount.google.com/brandaccounts" target="_blank">🚀 1. PROSES INVITE GMAIL JUAL</a>
         <button class="btn" style="background: #e67e22; color: #fff;" onclick="bukaPCCadangan()">💻 2. PROSES AMBIL KODE CADANGAN</button>
