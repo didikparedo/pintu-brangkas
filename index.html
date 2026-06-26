@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tool Ternak Sewu - Pasukan</title>
+    <title>Tool Ternak Sewu</title>
     <style>
         * {
             box-sizing: border-box;
@@ -84,6 +84,24 @@
             border: 2px solid #ffcc00; 
             text-align: center;
         }
+
+        /* DESAIN INSTRUKSI NON-KLIK (PENGGANTI TOMBOL 5) */
+        .instruksi-box {
+            display: block; 
+            width: 100%; 
+            max-width: 400px; 
+            margin: 15px auto; 
+            padding: 20px; 
+            font-size: 16px; 
+            background: #EA4335; 
+            color: #fff;
+            border: 2px dashed #fff; 
+            border-radius: 12px; 
+            font-weight: bold; 
+            cursor: default; /* Kursor biasa, bukan tangan/klik */
+            user-select: none;
+            -webkit-user-select: none;
+        }
     </style>
 </head>
 <body>
@@ -117,8 +135,11 @@
         <a class="btn" style="background: #FF9800; color: #fff;" href="https://myaccount.google.com/brandaccounts?si=1" target="_blank">🤝 2. TERIMA UNDANGAN</a>
         <a class="btn" style="background: #9b59b6; color: #fff;" href="?mode=ruangtunggu" target="_blank">⚙️ 3. KUNCI CHANNEL JUAL</a>
         
-        <a class="btn" style="background: #34A853; color: #fff;" href="https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome" target="_blank">📱 4. INPUT NOMER 2 STEP</a>
-        <a class="btn" style="background: #EA4335; color: #fff;" href="https://myaccount.google.com/two-step-verification/backup-codes" target="_blank">📝 5. AKTIFKAN & AMBIL KODE</a>
+        <a class="btn" style="background: #34A853; color: #fff;" href="https://myaccount.google.com/two-step-verification/phone-numbers" target="_blank">📱 4. INPUT NOMER 2 STEP</a>
+        
+        <div class="instruksi-box">
+            🛡️ 5. AKTIFKAN 2 STEP & AMBIL KODE (DI LAYAR GOOGLE)
+        </div>
     </div>
 
     <div id="menu-ruangtunggu" style="display: none;">
@@ -144,8 +165,11 @@
         <a class="btn" style="background: #FF9800; color: #fff;" href="https://myaccount.google.com/brandaccounts?si=1" target="_blank">🤝 2. TERIMA UNDANGAN</a>
         <a class="btn" style="background: #9b59b6; color: #fff;" href="https://www.youtube.com/signin?action_handle_signin=true&next=%2Faccount_advanced&feature=sign_in_button" target="_blank">⚙️ 3. KUNCI CHANNEL JUAL</a>
         
-        <a class="btn" style="background: #34A853; color: #fff;" href="https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome" target="_blank">📱 4. INPUT NOMER 2 STEP</a>
-        <a class="btn" style="background: #EA4335; color: #fff;" href="https://myaccount.google.com/two-step-verification/backup-codes" target="_blank">📝 5. AKTIFKAN & AMBIL KODE</a>
+        <a class="btn" style="background: #34A853; color: #fff;" href="https://myaccount.google.com/two-step-verification/phone-numbers" target="_blank">📱 4. INPUT NOMER 2 STEP</a>
+        
+        <div class="instruksi-box">
+            🛡️ 5. AKTIFKAN 2 STEP & AMBIL KODE (DI LAYAR GOOGLE)
+        </div>
     </div>
 
     <div class="footer">
